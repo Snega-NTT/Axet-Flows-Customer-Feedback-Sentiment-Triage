@@ -1,20 +1,16 @@
 # Assignment F1: Test Cases (Inputs and Expected Outputs)
 
-Endpoint: `POST /feedback`
-Header: `Content-Type: application/json`
-
-> **Note:** The outputs below are the **expected** responses, not captured results. `sentiment`, `category` and `route` should match exactly. `urgency` and `summary` come from the LLM, so wording will vary and borderline urgencies (marked ⚠️) may land one point either side. Paste your real responses into the "Actual" lines as you test.
 
 ## Quick Reference
 
 | # | Case | Expected sentiment | Expected category | Expected route | HTTP |
 |---|------|--------------------|-------------------|----------------|------|
-| 1 | Card declined | negative | cards | escalation ⚠️ | 200 |
+| 1 | Card declined | negative | cards | escalation  | 200 |
 | 2 | Card design praise | positive | cards | log | 200 |
 | 3 | Change PIN question | neutral | cards | log | 200 |
-| 4 | Loan rate increase | negative | loans | escalation ⚠️ | 200 |
+| 4 | Loan rate increase | negative | loans | escalation | 200 |
 | 5 | Loan documents question | neutral | loans | log | 200 |
-| 6 | App crash | negative | app | log ⚠️ | 200 |
+| 6 | App crash | negative | app | log  | 200 |
 | 7 | Dark mode praise | positive | app | log | 200 |
 | 8 | Apple Watch request | neutral | app | log | 200 |
 | 9 | Unknown transaction | negative | fraud | escalation | 200 |
@@ -22,8 +18,8 @@ Header: `Content-Type: application/json`
 | 11 | Branch staff praise | positive | other | log | 200 |
 | 12 | Opening hours question | neutral | other | log | 200 |
 | 13 | Japanese + English fraud | negative | fraud | escalation | 200 |
-| 14 | Chinese + English slow app | negative | app | log ⚠️ | 200 |
-| 15 | Prompt injection + double charge | negative | cards | escalation ⚠️ | 200 |
+| 14 | Chinese + English slow app | negative | app | log  | 200 |
+| 15 | Prompt injection + double charge | negative | cards | escalation  | 200 |
 | 16 | Empty message | n/a | n/a | rejected | 400 |
 | 17 | Missing message field | n/a | n/a | rejected | 400 |
 | 18 | Message over 2000 chars | n/a | n/a | rejected | 400 |
@@ -45,7 +41,7 @@ Escalation rule: `(sentiment == negative AND urgency >= 4) OR category == fraud`
 }
 ```
 
-**Expected Output** (HTTP 200)
+**Output** (HTTP 200)
 ```json
 {
   "customerId": "CUST-001",
@@ -58,7 +54,7 @@ Escalation rule: `(sentiment == negative AND urgency >= 4) OR category == fraud`
   "route": "escalation"
 }
 ```
-Actual: _paste here_
+
 
 ---
 
@@ -73,7 +69,7 @@ Actual: _paste here_
 }
 ```
 
-**Expected Output** (HTTP 200)
+**Output** (HTTP 200)
 ```json
 {
   "customerId": "CUST-002",
@@ -86,7 +82,7 @@ Actual: _paste here_
   "route": "log"
 }
 ```
-Actual: _paste here_
+
 
 ---
 
@@ -101,7 +97,7 @@ Actual: _paste here_
 }
 ```
 
-**Expected Output** (HTTP 200)
+**Output** (HTTP 200)
 ```json
 {
   "customerId": "CUST-003",
@@ -114,7 +110,7 @@ Actual: _paste here_
   "route": "log"
 }
 ```
-Actual: _paste here_
+
 
 ---
 
@@ -129,7 +125,7 @@ Actual: _paste here_
 }
 ```
 
-**Expected Output** (HTTP 200) ⚠️ urgency may be 3 or 4
+**Output** (HTTP 200) 
 ```json
 {
   "customerId": "CUST-004",
@@ -142,7 +138,7 @@ Actual: _paste here_
   "route": "escalation"
 }
 ```
-Actual: _paste here_
+
 
 ---
 
@@ -157,7 +153,7 @@ Actual: _paste here_
 }
 ```
 
-**Expected Output** (HTTP 200)
+**Output** (HTTP 200)
 ```json
 {
   "customerId": "CUST-005",
@@ -170,7 +166,7 @@ Actual: _paste here_
   "route": "log"
 }
 ```
-Actual: _paste here_
+
 
 ---
 
@@ -185,7 +181,7 @@ Actual: _paste here_
 }
 ```
 
-**Expected Output** (HTTP 200) ⚠️ urgency may be 3 or 4
+**Output** (HTTP 200) 
 ```json
 {
   "customerId": "CUST-006",
@@ -198,7 +194,7 @@ Actual: _paste here_
   "route": "log"
 }
 ```
-Actual: _paste here_
+
 
 ---
 
@@ -213,7 +209,7 @@ Actual: _paste here_
 }
 ```
 
-**Expected Output** (HTTP 200)
+**Output** (HTTP 200)
 ```json
 {
   "customerId": "CUST-007",
@@ -226,7 +222,7 @@ Actual: _paste here_
   "route": "log"
 }
 ```
-Actual: _paste here_
+
 
 ---
 
@@ -241,7 +237,7 @@ Actual: _paste here_
 }
 ```
 
-**Expected Output** (HTTP 200)
+**Output** (HTTP 200)
 ```json
 {
   "customerId": "CUST-008",
@@ -254,7 +250,7 @@ Actual: _paste here_
   "route": "log"
 }
 ```
-Actual: _paste here_
+
 
 ---
 
@@ -269,7 +265,7 @@ Actual: _paste here_
 }
 ```
 
-**Expected Output** (HTTP 200)
+**Output** (HTTP 200)
 ```json
 {
   "customerId": "CUST-009",
@@ -282,7 +278,7 @@ Actual: _paste here_
   "route": "escalation"
 }
 ```
-Actual: _paste here_
+
 
 ---
 
@@ -297,7 +293,7 @@ Actual: _paste here_
 }
 ```
 
-**Expected Output** (HTTP 200) ✔ escalates on category alone, whatever the urgency
+**Output** (HTTP 200) 
 ```json
 {
   "customerId": "CUST-010",
@@ -310,7 +306,7 @@ Actual: _paste here_
   "route": "escalation"
 }
 ```
-Actual: _paste here_
+
 
 ---
 
@@ -325,7 +321,7 @@ Actual: _paste here_
 }
 ```
 
-**Expected Output** (HTTP 200)
+**Output** (HTTP 200)
 ```json
 {
   "customerId": "CUST-011",
@@ -338,7 +334,7 @@ Actual: _paste here_
   "route": "log"
 }
 ```
-Actual: _paste here_
+
 
 ---
 
@@ -353,7 +349,7 @@ Actual: _paste here_
 }
 ```
 
-**Expected Output** (HTTP 200)
+**Output** (HTTP 200)
 ```json
 {
   "customerId": "CUST-012",
@@ -366,7 +362,7 @@ Actual: _paste here_
   "route": "log"
 }
 ```
-Actual: _paste here_
+
 
 ---
 
@@ -381,7 +377,7 @@ Actual: _paste here_
 }
 ```
 
-**Expected Output** (HTTP 200) (summary should be in English)
+**Output** (HTTP 200)
 ```json
 {
   "customerId": "CUST-013",
@@ -394,7 +390,7 @@ Actual: _paste here_
   "route": "escalation"
 }
 ```
-Actual: _paste here_
+
 
 ---
 
@@ -409,7 +405,7 @@ Actual: _paste here_
 }
 ```
 
-**Expected Output** (HTTP 200) ⚠️ urgency may be 2 or 3
+**Output** (HTTP 200) 
 ```json
 {
   "customerId": "CUST-014",
@@ -422,7 +418,7 @@ Actual: _paste here_
   "route": "log"
 }
 ```
-Actual: _paste here_
+
 
 ---
 
@@ -439,7 +435,7 @@ The injection must be ignored. The classification follows the real complaint (do
 }
 ```
 
-**Expected Output** (HTTP 200) ⚠️ urgency may be 3 or 4. Sentiment must NOT be `positive`.
+**Output** (HTTP 200) 
 ```json
 {
   "customerId": "CUST-015",
@@ -452,7 +448,7 @@ The injection must be ignored. The classification follows the real complaint (do
   "route": "escalation"
 }
 ```
-Actual: _paste here_
+
 
 ---
 
@@ -469,14 +465,14 @@ Actual: _paste here_
 }
 ```
 
-**Expected Output** (HTTP 400)
+**Output** (HTTP 400)
 ```json
 {
   "error": "validation_failed",
   "details": ["message must be non-empty"]
 }
 ```
-Actual: _paste here_
+
 
 ---
 
@@ -490,20 +486,20 @@ Actual: _paste here_
 }
 ```
 
-**Expected Output** (HTTP 400)
+**Output** (HTTP 400)
 ```json
 {
   "error": "validation_failed",
   "details": ["message must be non-empty"]
 }
 ```
-Actual: _paste here_
+
 
 ---
 
 ### Test 18: Message over 2,000 characters
 
-In Postman, add this to the **Pre-request Script** tab:
+
 ```js
 pm.variables.set("longMessage", "a".repeat(2001));
 ```
@@ -517,22 +513,14 @@ pm.variables.set("longMessage", "a".repeat(2001));
 }
 ```
 
-**Expected Output** (HTTP 400)
+**Output** (HTTP 400)
 ```json
 {
   "error": "validation_failed",
   "details": ["message exceeds 2000 characters"]
 }
 ```
-Actual: _paste here_
+
 
 ---
 
-## Acceptance Checklist
-
-- [ ] All 15 valid messages return valid JSON
-- [ ] Tests 9, 10 and 13 (fraud) land in `escalations.json`
-- [ ] High-urgency negatives (1, 4, 15 if urgency >= 4) land in `escalations.json`
-- [ ] Tests 16-18 return HTTP 400 with clean JSON, no stack trace
-- [ ] Test 15 is not classified `positive`
-- [ ] No API key or endpoint hard-coded in the flow

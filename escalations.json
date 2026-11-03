@@ -1,18 +1,4 @@
-[
-  {
-    "route": "escalation",
-    "escalatedAt": "2026-10-30T02:51:01.545Z",
-    "customerId": "CUST-013",
-    "channel": "mobile-app",
-    "message": "カードが勝手に使われています。unauthorised transaction on my account, please block it now!",
-    "classification": {
-      "sentiment": "negative",
-      "category": "fraud",
-      "urgency": 5,
-      "summary": "Customer reports an unauthorized transaction and requests card blocking."
-    },
-    "fallbackUsed": false
-  },
+[  
   {
     "route": "escalation",
     "escalatedAt": "2026-10-30T02:51:32.599Z",
